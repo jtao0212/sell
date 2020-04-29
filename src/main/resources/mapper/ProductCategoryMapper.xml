@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiantao.sell.mapper.ProductCategoryMapper">
+
+    <insert id="addProductCategory" parameterType="ProductCategory">
+        INSERT INTO PRODUCT_CATEGORY (CATEGORY_NAME,CATEGORY_TYPE)
+        VALUE (#{categoryName},#{categoryType})
+    </insert>
+
+    <select id="getList" resultType="ProductCategory">
+        select * from PRODUCT_CATEGORY
+    </select>
+
+</mapper>

@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: taojian
+#    password: Tj6472899
+#    url: jdbc:mysql://jtao0212.mysql.zhangbei.rds.aliyuncs.com:3306/sell?characterEncoding=UTF-8&useSSL=false
+
+    username: root
+    password: taojian
+    url: jdbc:mysql://localhost:3306/sell?characterEncoding=UTF-8&useSSL=false
+server:
+  servlet:
+    context-path: /sell
+#logging:
+#  pattern:
+#    console: "%d - %msg%n"
+
+mybatis:
+  type-aliases-package: com.jiantao.sell
+  config-location: classpath:/mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml
