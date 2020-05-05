@@ -9,5 +9,7 @@ public interface ProductCategoryService {
 
     void  addProductCategory(ProductCategory productCategory);
 
-    List<ProductCategory> getList();
+    List<ProductCategory> getCategoryList();
+
+    List<ProductCategory> getCategoryByType(int categoryType);
 }

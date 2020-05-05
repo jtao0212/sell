@@ -9,8 +9,11 @@
         VALUE (#{categoryName},#{categoryType})
     </insert>
 
-    <select id="getList" resultType="ProductCategory">
+    <select id="getCategoryList" resultType="ProductCategory">
         select * from PRODUCT_CATEGORY
     </select>
 
+    <select id="getCategoryList" resultType="ProductCategory">
+        select * from PRODUCT_CATEGORY WHERE CATEGORY_TYPE = #{categoryType}
+    </select>
 </mapper>

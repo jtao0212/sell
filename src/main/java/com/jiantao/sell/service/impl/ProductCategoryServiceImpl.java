@@ -25,7 +25,12 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     }
 
     @Override
-    public List<ProductCategory> getList() {
-        return productCategoryMapper.getList();
+    public List<ProductCategory> getCategoryList() {
+        return productCategoryMapper.getCategoryList();
+    }
+
+    @Override
+    public List<ProductCategory> getCategoryByType(int categoryType) {
+        return productCategoryMapper.getCategoryByType(categoryType);
     }
 }

@@ -5,7 +5,6 @@ import com.jiantao.sell.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,14 +19,16 @@ public class ProductCategoryController {
     @Autowired
     private ProductCategoryService productCategoryService;
 
-    @PostMapping(value = "/add")
+    @PostMapping(value = "/addCategory")
     public void addProductCategory(@RequestBody ProductCategory productCategory) {
 
         productCategoryService.addProductCategory(productCategory);
     }
 
-    @GetMapping("/get")
-    public List<ProductCategory> getList() {
-        return productCategoryService.getList();
+    @GetMapping("/getCategoryList")
+    public List<ProductCategory> getCategoryList() {
+        return productCategoryService.getCategoryList();
     }
+
+
 }
