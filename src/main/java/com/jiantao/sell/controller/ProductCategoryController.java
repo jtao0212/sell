@@ -30,5 +30,9 @@ public class ProductCategoryController {
         return productCategoryService.getCategoryList();
     }
 
+    @PostMapping(value = "/getCategoryByTypes")
+    public List<ProductCategory> getCategoryByTypes(@RequestBody List<Integer> types){
+        return productCategoryService.getCategoryByTypes(types);
 
+    }
 }

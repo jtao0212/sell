@@ -13,7 +13,10 @@
         select * from PRODUCT_CATEGORY
     </select>
 
-    <select id="getCategoryList" resultType="ProductCategory">
-        select * from PRODUCT_CATEGORY WHERE CATEGORY_TYPE = #{categoryType}
+    <select id="getCategoryByTypes" parameterType="list" resultType="ProductCategory">
+        select * from PRODUCT_CATEGORY WHERE CATEGORY_TYPE IN
+        <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
     </select>
 </mapper>

@@ -1,7 +1,6 @@
 package com.jiantao.sell.mapper;
 
 import com.jiantao.sell.entity.ProductCategory;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,5 +12,5 @@ public interface ProductCategoryMapper {
 
     List<ProductCategory> getCategoryList();
 
-    List<ProductCategory> getCategoryByType(@Param(value = "categoryType") int categoryType);
+    List<ProductCategory> getCategoryByTypes(List<Integer> types);
 }

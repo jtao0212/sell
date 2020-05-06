@@ -30,7 +30,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     }
 
     @Override
-    public List<ProductCategory> getCategoryByType(int categoryType) {
-        return productCategoryMapper.getCategoryByType(categoryType);
+    public List<ProductCategory> getCategoryByTypes(List<Integer> types) {
+        return productCategoryMapper.getCategoryByTypes(types);
     }
 }
