@@ -31,7 +31,7 @@ public class ProductCategoryController {
     }
 
     @PostMapping(value = "/getCategoryByTypes")
-    public List<ProductCategory> getCategoryByTypes(@RequestBody List<Integer> types){
+    public List<ProductCategory> getCategoryByTypes(@RequestBody List<String> types){
         return productCategoryService.getCategoryByTypes(types);
 
     }

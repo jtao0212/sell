@@ -11,5 +11,5 @@ public interface ProductCategoryService {
 
     List<ProductCategory> getCategoryList();
 
-    List<ProductCategory> getCategoryByTypes(List<Integer> types);
+    List<ProductCategory> getCategoryByTypes(List<String> types);
 }
