@@ -1,6 +1,6 @@
 package com.jiantao.sell.controller;
 
-import com.fasterxml.jackson.databind.util.BeanUtil;
+import com.github.pagehelper.PageInfo;
 import com.jiantao.sell.VO.ProductInfoVO;
 import com.jiantao.sell.VO.ProductVO;
 import com.jiantao.sell.VO.ResultVO;
@@ -13,6 +13,7 @@ import com.jiantao.sell.utils.ResultVOUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sun.jvm.hotspot.debugger.Page;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping(value = "/buyer/product")
-public class ProductInfoController {
+public class BuyerProductController {
 
     @Autowired
     private ProductInfoService productInfoService;
@@ -33,7 +34,7 @@ public class ProductInfoController {
     @Autowired
     private ProductCategoryService productCategoryService;
 
-    @GetMapping("list")
+    @GetMapping("/list")
     public ResultVO list() {
         //1、查询所有上架商品
         List<ProductInfo> productInfoList = productInfoService.getProductByStatus(ProductStatusEnum.UP.getStatus());
@@ -72,8 +73,9 @@ public class ProductInfoController {
     }
 
     @GetMapping("/getAllProduct")
-    public List<ProductInfo> getAllProduct() {
-        return productInfoService.getAllProduct();
+    public PageInfo<ProductInfo> getAllProduct(@RequestParam(value = "pageNum") Integer pageNum,
+                                               @RequestParam(value = "pageSize") Integer pageSize) {
+        return productInfoService.getAllProduct(pageNum, pageSize);
     }
 
     @PostMapping(value = "/getProductById")

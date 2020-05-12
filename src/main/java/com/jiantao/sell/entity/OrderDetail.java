@@ -2,16 +2,20 @@ package com.jiantao.sell.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**
  * @author: jiantao
- * @date: 2020-05-06 20:48
- * @description: 商品
+ * @date: 2020-05-07 19:12
+ * @description:
  */
 @Data
-public class ProductInfo {
+public class OrderDetail implements Serializable {
+    private String detailId;
+
+    private String orderId;
 
     private String productId;
 
@@ -19,17 +23,12 @@ public class ProductInfo {
 
     private BigDecimal productPrice;
 
-    private Integer productStock;
-
-    private String productDescription;
+    private Integer productQuantity;
 
     private String productIcon;
-
-    private String productStatus;
-
-    private String categoryType;
 
     private Date updateTime;
 
     private Date createTime;
+
 }

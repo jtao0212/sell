@@ -1,34 +1,26 @@
 package com.jiantao.sell.utils;
 
+import lombok.Data;
+
 /**
  * @author: jiantao
  * @date: 2020-05-06 21:25
  * @description:
  */
+@Data
 public class PageRequest {
 
     /**
      * 当前页码
      */
-    private int pageNum;
+    private Integer pageNum;
     /**
      * 每页数量
      */
-    private int pageSize;
+    private Integer pageSize;
 
-    public int getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(int pageNum) {
+    public PageRequest(Integer pageNum, Integer pageSize) {
         this.pageNum = pageNum;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
     }
 }

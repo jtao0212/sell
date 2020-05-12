@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiantao.sell.mapper.OrderMasterMapper">
+
+    <select id="getOrderList" resultType="OrderMaster">
+        select * from ORDER_MASTER ORDER BY CREATE_TIME DESC
+    </select>
+</mapper>

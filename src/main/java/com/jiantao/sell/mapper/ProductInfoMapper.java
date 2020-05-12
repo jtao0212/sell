@@ -16,4 +16,6 @@ public interface ProductInfoMapper {
     List<ProductInfo> getAllProduct();
 
     void addProduct(ProductInfo productInfo);
+
+    void updateProductInfo(ProductInfo productInfo);
 }
