@@ -8,6 +8,15 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span12">
+            <h3>
+                卖家商品列表
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
             <table class="table table-bordered">
                 <thead>
                 <tr>
@@ -17,7 +26,6 @@
                     <th>地址</th>
                     <th>金额</th>
                     <th>订单状态</th>
-                    <#--<th>支付方式</th>-->
                     <th>支付状态</th>
                     <th>创建时间</th>
                     <th colspan="2">操作</th>
@@ -25,21 +33,43 @@
                 </thead>
                 <tbody>
                 <#list orderDTOPage.list as orderDTO>
-                <tr>
-                    <td>${orderDTO.orderId}</td>
-                    <td>${orderDTO.buyerName}</td>
-                    <td>${orderDTO.buyerPhone}</td>
-                    <td>${orderDTO.buyerAddress}</td>
-                    <td>${orderDTO.orderAmount}</td>
-                    <td>${orderDTO.getOrderStatusEnum().msg}</td>
-                    <td>${orderDTO.getPayStatusEnum().msg}</td>
-                    <td>${orderDTO.createTime?string('yyyy-MM-dd HH:mm:ss')}</td>
-                    <td>详情</td>
-                    <td>取消</td>
-                </tr>
+                    <tr>
+                        <td>${orderDTO.orderId}</td>
+                        <td>${orderDTO.buyerName}</td>
+                        <td>${orderDTO.buyerPhone}</td>
+                        <td>${orderDTO.buyerAddress}</td>
+                        <td>${orderDTO.orderAmount}</td>
+                        <td>${orderDTO.getOrderStatusEnum().msg}</td>
+                        <td>${orderDTO.getPayStatusEnum().msg}</td>
+                        <td>${orderDTO.createTime?string('yyyy-MM-dd HH:mm:ss')}</td>
+                        <td>详情</td>
+                        <td>取消</td>
+                    </tr>
                 </#list>
                 </tbody>
             </table>
+        </div>
+        <#--分页-->
+        <div class="col-md-12 column">
+            <ul class="pagination pull-right">
+                <#if currentPage lte 1>
+                    <li class="disabled"><a href="#">上一页</a></li>
+                <#else>
+                    <li><a href="/sell/seller/order/list?page=${currentPage - 1}&size=${size}">上一页</a></li>
+                </#if>
+                <#list 1..orderDTOPage.pages as index>
+                    <#if currentPage == index>
+                        <li class="disabled"><a href="#">${index}</a></li>
+                    <#else>
+                        <li><a href="/sell/seller/order/list?page=${index}&size=${size}">${index}</a></li>
+                    </#if>
+                </#list>
+                <#if currentPage gte orderDTOPage.pages>
+                    <li class="disabled"><a href="#">下一页</a></li>
+                <#else>
+                    <li><a href="/sell/seller/order/list?page=${currentPage + 1}&size=${size}">下一页</a></li>
+                </#if>
+            </ul>
         </div>
     </div>
 </div>

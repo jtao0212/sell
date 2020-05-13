@@ -28,13 +28,13 @@ public class SellerOrderController {
     private OrderService orderService;
 
     @GetMapping("/list")
-    public ModelAndView list(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
-                             @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
+    public ModelAndView list(@RequestParam(value = "page", defaultValue = "1") Integer page,
+                             @RequestParam(value = "size", defaultValue = "5") Integer size,
                              Map<String, Object> map) {
-        PageInfo<OrderDTO> orderDTOPage = orderService.getOrderList(pageNum, pageSize);
+        PageInfo<OrderDTO> orderDTOPage = orderService.getOrderList(page, size);
         map.put("orderDTOPage", orderDTOPage);
-        map.put("currentPage", orderDTOPage.getPageNum());
-        map.put("size", orderDTOPage.getPageSize());
+        map.put("currentPage", page);
+        map.put("size", size);
         return new ModelAndView("/order/list", map);
     }
 }

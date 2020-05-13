@@ -207,7 +207,8 @@ public class OrderServiceImpl implements OrderService {
         List<OrderMaster> orderMasters = orderMasterMapper.getOrderList();
         PageInfo<OrderMaster> pageInfo = new PageInfo<>(orderMasters);
         List<OrderDTO> orderDTOList = OrderMaster2OrderDTOConverter.convert(pageInfo.getList());
-
-        return new PageInfo<>(orderDTOList);
+        PageInfo<OrderDTO> orderDTOPageInfo = new PageInfo<>(orderDTOList);
+        orderDTOPageInfo.setPages(pageInfo.getPages());
+        return orderDTOPageInfo;
     }
 }
