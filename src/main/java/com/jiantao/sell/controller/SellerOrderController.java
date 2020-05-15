@@ -2,9 +2,10 @@ package com.jiantao.sell.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.jiantao.sell.dto.OrderDTO;
-import com.jiantao.sell.entity.ProductInfo;
+import com.jiantao.sell.enums.ResultEnum;
+import com.jiantao.sell.exception.SellException;
 import com.jiantao.sell.service.OrderService;
-import com.jiantao.sell.service.ProductInfoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,6 +22,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/seller/order")
+@Slf4j
 public class SellerOrderController {
 
     @Autowired
@@ -36,5 +37,27 @@ public class SellerOrderController {
         map.put("currentPage", page);
         map.put("size", size);
         return new ModelAndView("/order/list", map);
+    }
+
+    /**
+     * 取消订单
+     *
+     * @param orderId 订单id
+     */
+    @GetMapping("/cancel")
+    public ModelAndView cancel(@RequestParam("orderId") String orderId,
+                               Map<String, Object> map) {
+        try {
+            OrderDTO orderDTO = orderService.getOrderById(orderId);
+            orderService.cacenOrder(orderDTO);
+        } catch (SellException e) {
+            log.error("【卖家取消订单】，发生异常{}", e);
+            map.put("msg", e.getMessage());
+            map.put("url", "/sell/seller/order/list");
+            return new ModelAndView("common/error", map);
+        }
+        map.put("msg", ResultEnum.ORDER_CANCEL_SUCCESS.getMsg());
+        map.put("url", "/sell/seller/order/list");
+        return new ModelAndView("common/success", map);
     }
 }

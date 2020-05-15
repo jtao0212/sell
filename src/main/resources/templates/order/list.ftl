@@ -43,7 +43,9 @@
                         <td>${orderDTO.getPayStatusEnum().msg}</td>
                         <td>${orderDTO.createTime?string('yyyy-MM-dd HH:mm:ss')}</td>
                         <td>详情</td>
-                        <td>取消</td>
+                        <#if orderDTO.orderStatus == "0">
+                            <td><a href="/sell/seller/order/cancel?orderId=${orderDTO.orderId}">取消</a></td>
+                        </#if>
                     </tr>
                 </#list>
                 </tbody>
