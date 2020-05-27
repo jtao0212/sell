@@ -1,6 +1,7 @@
 package com.jiantao.sell.mapper;
 
 import com.jiantao.sell.entity.OrderMaster;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,9 +14,9 @@ public interface OrderMasterMapper {
 
     void saveOrderMaster(OrderMaster orderMaster);
 
-    OrderMaster getOrderById(String orderId);
+    OrderMaster getOrderById(@Param("orderId") String orderId);
 
-    int updateOrderStatus(OrderMaster orderMaster);
+    int updateOrderStatus(@Param("orderMaster") OrderMaster orderMaster);
 
     List<OrderMaster> getOrderList();
 }

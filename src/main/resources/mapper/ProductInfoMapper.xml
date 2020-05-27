@@ -7,4 +7,13 @@
     <select id="getProductByStatus" parameterType="String" resultType="ProductInfo">
         select * from PRODUCT_INFO WHERE PRODUCT_STATUS = #{status}
     </select>
+
+    <select id="getProductById" parameterType="String" resultType="ProductInfo">
+        select * from PRODUCT_INFO WHERE product_id = #{productId}
+    </select>
+
+    <update id="updateProductInfo" parameterType="ProductInfo">
+        update product_info set product_stock = #{productInfo.productStock}
+          where product_id = #{productInfo.productId}
+    </update>
 </mapper>

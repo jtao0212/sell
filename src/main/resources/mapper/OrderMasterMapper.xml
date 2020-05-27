@@ -7,4 +7,13 @@
     <select id="getOrderList" resultType="OrderMaster">
         select * from ORDER_MASTER ORDER BY CREATE_TIME DESC
     </select>
+
+    <select id="getOrderById" resultType="OrderMaster" parameterType="String">
+        select * from order_master where order_id = #{orderId}
+    </select>
+
+    <update id="updateOrderStatus" parameterType="OrderMaster">
+        update order_master set order_status = #{orderMaster.orderStatus}
+          where order_id = #{orderMaster.orderId}
+    </update>
 </mapper>

@@ -33,6 +33,8 @@ public enum ResultEnum {
     ORDER_OWNER_ERROR("18", "该订单不属于当前用户"),
 
     ORDER_CANCEL_SUCCESS("19", "订单取消成功"),
+
+    ORDER_FINISH_SUCCESS("20", "订单完结成功"),
     ;
 
     private String code;

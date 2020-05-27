@@ -11,11 +11,11 @@ public interface ProductInfoMapper {
 
     List<ProductInfo> getProductByStatus(@Param("status") String status);
 
-    ProductInfo getProductById(String id);
+    ProductInfo getProductById(@Param("productId") String productId);
 
     List<ProductInfo> getAllProduct();
 
     void addProduct(ProductInfo productInfo);
 
-    void updateProductInfo(ProductInfo productInfo);
+    void updateProductInfo(@Param("productInfo") ProductInfo productInfo);
 }
